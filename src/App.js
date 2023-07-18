@@ -19,7 +19,7 @@ import {
 } from "react-router-dom";
 import RouteSwitch from "./RouteSwitch";
 import AppProvider from "./AppProvider";
-import Header from "./components/Header";
+import Header from "./modules/components/Header";
 
 export default function App() {
     return (

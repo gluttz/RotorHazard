@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -13,7 +14,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import SvgIcon from "@mui/material/SvgIcon";
 import SettingsIcon from "@mui/icons-material/Settings";
-import { ReactComponent as IconSvg } from "../assets/images/icon.svg";
+import { ReactComponent as IconSvg } from "../../assets/images/icon.svg";
 import PropTypes from "prop-types";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
@@ -120,14 +121,21 @@ export default function Header() {
                             }}
                         >
                             {pages.map((page) => (
-                                <MenuItem
+                                <Link
                                     key={page}
+                                    to={`/${page.toLowerCase()}`}
                                     onClick={handleCloseNavMenu}
+                                    style={{
+                                        textDecoration: "none",
+                                        color: "inherit",
+                                    }}
                                 >
-                                    <Typography textAlign="center">
-                                        {page}
-                                    </Typography>
-                                </MenuItem>
+                                    <MenuItem>
+                                        <Typography textAlign="center">
+                                            {page}
+                                        </Typography>
+                                    </MenuItem>
+                                </Link>
                             ))}
                         </Menu>
                     </Box>
@@ -161,13 +169,21 @@ export default function Header() {
                         }}
                     >
                         {pages.map((page) => (
-                            <Button
+                            <Link
                                 key={page}
+                                to={`/${page.toLowerCase()}`}
                                 onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: "white", display: "block" }}
+                                style={{
+                                    textDecoration: "none",
+                                    color: "inherit",
+                                }}
                             >
-                                {page}
-                            </Button>
+                                <MenuItem>
+                                    <Typography textAlign="center">
+                                        {page}
+                                    </Typography>
+                                </MenuItem>
+                            </Link>
                         ))}
                     </Box>
 
