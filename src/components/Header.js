@@ -12,7 +12,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import SvgIcon from "@mui/material/SvgIcon";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import SettingsIcon from "@mui/icons-material/Settings";
 import { ReactComponent as IconSvg } from "../assets/images/icon.svg";
 import PropTypes from "prop-types";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -150,12 +150,14 @@ export default function Header() {
                             textDecoration: "none",
                         }}
                     >
-                        LOGO
+                        RotorHazard
                     </Typography>
                     <Box
                         sx={{
                             flexGrow: 1,
                             display: { xs: "none", md: "flex" },
+                            justifyContent: "center",
+                            gap: "4rem",
                         }}
                     >
                         {pages.map((page) => (
@@ -175,9 +177,10 @@ export default function Header() {
                                 onClick={handleOpenUserMenu}
                                 sx={{ p: 0 }}
                             >
-                                <Avatar
-                                    alt="Remy Sharp"
-                                    src="AccountCircleIcon"
+                                <SettingsIcon
+                                    alt="Account"
+                                    fontSize="large"
+                                    color="inherit"
                                 />
                             </IconButton>
                         </Tooltip>
