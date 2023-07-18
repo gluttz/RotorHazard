@@ -5,9 +5,9 @@ export default function RouteSwitch() {
     return (
         <>
             <Routes>
-                <Route path="/" element={<Home />}></Route>
-                <Route path="/Home" element={<Home />}></Route>
-                {/* <Route path="/store" element={"<Store />"}></Route> */}
+                <Route path="/" element={<Home />} />
+                <Route path="/Home" element={<Home />} />
+                {/* <Route path="/diy" element={"<DIY />"}></Route> */}
             </Routes>
         </>
     );
