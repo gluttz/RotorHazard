@@ -8,6 +8,8 @@ import reportWebVitals from "./reportWebVitals";
 import theme from "./theme";
 import "./styles/reset.css";
 
+//Imports are most performant when made over multiple lines with the direct path given
+
 //StrictMode is a tool for highlighting potential problems in an application.
 // Like Fragment, StrictMode does not render any visible UI. It activates additional checks and warnings for its descendants.
 

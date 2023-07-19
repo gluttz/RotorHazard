@@ -8,32 +8,15 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import SvgIcon from "@mui/material/SvgIcon";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { ReactComponent as IconSvg } from "../../assets/images/icon.svg";
-import PropTypes from "prop-types";
-import CssBaseline from "@mui/material/CssBaseline";
-import Divider from "@mui/material/Divider";
-import Drawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
+import TemporaryDrawer from "./AppBarDrawer";
 
 const pages = ["Home", "Products", "About", "Contribute"];
-const settings = [
-    "Profile",
-    "Account",
-    "Dashboard",
-    "Theme",
-    "Help",
-    "Contact",
-    "Logout",
-];
+const settings = ["Discord", "Patreon", "Facebook", "GitHub", "Theme"];
 const drawerWidth = "100%";
 
 export default function Header({ value }) {
@@ -41,6 +24,7 @@ export default function Header({ value }) {
 
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const [drawerOpen, setDrawerOpen] = React.useState(false);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -55,6 +39,17 @@ export default function Header({ value }) {
 
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
+    };
+
+    const toggleDrawer = (open) => (event) => {
+        if (
+            event.type === "keydown" &&
+            (event.key === "Tab" || event.key === "Shift")
+        ) {
+            return;
+        }
+
+        setDrawerOpen(open);
     };
 
     const HomeIcon = (props) => (
@@ -125,8 +120,19 @@ export default function Header({ value }) {
                             {pages.map((page) => (
                                 <Link
                                     key={page}
-                                    to={`/${page.toLowerCase()}`}
-                                    onClick={handleCloseNavMenu}
+                                    to={
+                                        page !== "Products"
+                                            ? `/${page.toLowerCase()}`
+                                            : null
+                                    }
+                                    onClick={
+                                        page !== "Products"
+                                            ? handleCloseNavMenu
+                                            : () => {
+                                                  handleCloseNavMenu();
+                                                  setDrawerOpen(true);
+                                              }
+                                    }
                                     style={{
                                         textDecoration: "none",
                                         color: "inherit",
@@ -167,14 +173,26 @@ export default function Header({ value }) {
                             flexGrow: 1,
                             display: { xs: "none", md: "flex" },
                             marginLeft: "10%",
-                            gap: "4rem",
+                            justifyContent: "flex-start",
+                            gap: "2rem",
                         }}
                     >
                         {pages.map((page) => (
                             <Link
                                 key={page}
-                                to={`/${page.toLowerCase()}`}
-                                onClick={handleCloseNavMenu}
+                                to={
+                                    page !== "Products"
+                                        ? `/${page.toLowerCase()}`
+                                        : null
+                                }
+                                onClick={
+                                    page !== "Products"
+                                        ? handleCloseNavMenu
+                                        : () => {
+                                              handleCloseNavMenu();
+                                              setDrawerOpen(true);
+                                          }
+                                }
                                 style={{
                                     textDecoration: "none",
                                     color: "inherit",
@@ -230,6 +248,12 @@ export default function Header({ value }) {
                             ))}
                         </Menu>
                     </Box>
+                    {drawerOpen && (
+                        <TemporaryDrawer
+                            drawerOpen={drawerOpen}
+                            toggleDrawer={toggleDrawer}
+                        />
+                    )}
                 </Toolbar>
             </Container>
         </AppBar>
