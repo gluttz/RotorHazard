@@ -1,18 +1,19 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Products from "./pages/Products";
-import AboutUs from "./pages/AboutUs";
-import Contribute from "./pages/Contribute";
+import Home from "./modules/pages/Home";
+import Products from "./modules/pages/Products";
+import About from "./modules/pages/About";
+import Contribute from "./modules/pages/Contribute";
 
 export default function RouteSwitch() {
     return (
         <>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/Home" element={<Home />} />
-                <Route path="/Products" element={<Products />} />
-                <Route path="/AboutUs" element={<AboutUs />} />
-                <Route path="/Contribute" element={<Contribute />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/products" element={<Products />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contribute" element={<Contribute />} />
+                <Route path="/GUI" element={<Contribute />} />
             </Routes>
         </>
     );

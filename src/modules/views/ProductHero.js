@@ -10,7 +10,7 @@ export default function ProductHero() {
             sxBackground={{
                 backgroundImage: `url(${backgroundImage})`,
                 backgroundColor: "#7fc7d9", // Average color of the background image.
-                backgroundPosition: "center",
+                backgroundPosition: "bottom",
             }}
         >
             {/* Increase the network loading priority of the background image. */}
@@ -24,6 +24,7 @@ export default function ProductHero() {
                 align="center"
                 variant="h2"
                 marked="center"
+                sx={{ caretColor: "transparent" }}
             >
                 Upgrade your Sundays
             </Typography>
@@ -31,7 +32,7 @@ export default function ProductHero() {
                 color="inherit"
                 align="center"
                 variant="h5"
-                sx={{ mb: 4, mt: { xs: 4, sm: 10 } }}
+                sx={{ mb: 4, mt: { xs: 4, sm: 10 }, caretColor: "transparent" }}
             >
                 FPV Race Timing and Event Management
             </Typography>
@@ -45,7 +46,11 @@ export default function ProductHero() {
             >
                 Products
             </Button>
-            <Typography variant="body2" color="inherit" sx={{ mt: 2 }}>
+            <Typography
+                variant="body2"
+                color="inherit"
+                sx={{ mt: 2, caretColor: "transparent" }}
+            >
                 Discover the latest in FPV racing lap timers
             </Typography>
         </ProductHeroLayout>
