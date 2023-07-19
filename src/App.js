@@ -21,6 +21,10 @@ import RouteSwitch from "./RouteSwitch";
 import AppProvider from "./AppProvider";
 import Header from "./modules/components/Header";
 
+//The entry point of our actual content
+//anything outside RouteSwitch will be rendered on every page
+//anything inside RouteSwitch will be rendered based on the current URL
+
 export default function App() {
     return (
         <>

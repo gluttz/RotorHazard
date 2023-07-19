@@ -1,5 +1,7 @@
 import { createTheme } from "@mui/material/styles";
 
+//overall theme config file for the website, change a value and the whole website will change with it
+
 const theme = createTheme({
     palette: {
         mode: "light",
