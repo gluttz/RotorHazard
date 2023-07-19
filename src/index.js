@@ -6,6 +6,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import theme from "./theme";
+import "./styles/reset.css";
 
 //StrictMode is a tool for highlighting potential problems in an application.
 // Like Fragment, StrictMode does not render any visible UI. It activates additional checks and warnings for its descendants.
@@ -24,7 +25,7 @@ root.render(
         <BrowserRouter>
             <ThemeProvider theme={theme}>
                 <CssBaseline />
-                <App sx={{ minHeight: "100vh" }} />
+                <App />
             </ThemeProvider>
         </BrowserRouter>
     </React.StrictMode>

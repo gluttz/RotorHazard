@@ -7,11 +7,11 @@ import { useState, createContext, useContext, useMemo } from "react";
 export const AppContext = createContext();
 //TODO: remove this context, already replaced with MUI theme
 export default function AppProvider({ children }) {
-    const [isDarkTheme, setIsDarkTheme] = useState(true);
+    const [currentPage, setCurrentPage] = useState("home");
 
     const contextValue = useMemo(
-        () => ({ isDarkTheme, setIsDarkTheme }),
-        [isDarkTheme, setIsDarkTheme]
+        () => ({ currentPage, setCurrentPage }),
+        [currentPage, setCurrentPage]
     );
     return (
         <>

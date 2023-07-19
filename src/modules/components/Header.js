@@ -36,7 +36,9 @@ const settings = [
 ];
 const drawerWidth = "100%";
 
-export default function Header() {
+export default function Header({ value }) {
+    // const context = React.useContext(value);
+
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -164,7 +166,7 @@ export default function Header() {
                         sx={{
                             flexGrow: 1,
                             display: { xs: "none", md: "flex" },
-                            justifyContent: "center",
+                            marginLeft: "10%",
                             gap: "4rem",
                         }}
                     >
