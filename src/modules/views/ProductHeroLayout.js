@@ -8,10 +8,15 @@ import SvgIcon from "@mui/material/SvgIcon";
 
 const ProductHeroLayoutRoot = styled("section")(({ theme }) => ({
     color: theme.palette.common.white,
-    position: "relative",
+    position: "static",
     display: "flex",
     alignItems: "center",
-    minHeight: "94%",
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    zIndex: -1,
 }));
 
 const Background = styled(Box)({
@@ -22,7 +27,7 @@ const Background = styled(Box)({
     bottom: 0,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    zIndex: -2,
+    zIndex: -10,
 });
 
 export default function ProductHeroLayout(props) {
@@ -49,7 +54,7 @@ export default function ProductHeroLayout(props) {
                         bottom: 0,
                         backgroundColor: "common.black",
                         opacity: 0.5,
-                        zIndex: -1,
+                        zIndex: -9,
                     }}
                 />
                 <Background sx={sxBackground} />

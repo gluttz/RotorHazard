@@ -20,6 +20,8 @@ import "./styles/reset.css";
 //The CssBaseline component helps to kickstart an elegant, consistent, and simple baseline to build upon.
 
 const domNode = document.getElementById("root");
+domNode.style.cssText +=
+    "position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: -1000;";
 const root = createRoot(domNode);
 
 root.render(

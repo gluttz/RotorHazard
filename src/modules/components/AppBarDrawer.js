@@ -1,7 +1,6 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
-import Button from "@mui/material/Button";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
@@ -11,9 +10,7 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 
-const drawerWidth = "100%";
-
-export default function TemporaryDrawer({ drawerOpen, toggleDrawer }) {
+export default function ProductsDrawer({ drawerOpen, toggleDrawer }) {
     return (
         <Drawer anchor={"top"} open={drawerOpen} onClose={toggleDrawer(false)}>
             <Box

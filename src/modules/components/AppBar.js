@@ -13,7 +13,7 @@ import MenuItem from "@mui/material/MenuItem";
 import SvgIcon from "@mui/material/SvgIcon";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { ReactComponent as IconSvg } from "../../assets/images/icon.svg";
-import TemporaryDrawer from "./AppBarDrawer";
+import ProductsDrawer from "./AppBarDrawer";
 import patreonIcon from "../../assets/images/patreonIcon.svg";
 import discordIcon from "../../assets/images/discordIcon.svg";
 import facebookIcon from "../../assets/images/facebookIcon.svg";
@@ -343,7 +343,7 @@ export default function Header() {
                         </Menu>
                     </Box>
                     {drawerOpen && (
-                        <TemporaryDrawer
+                        <ProductsDrawer
                             drawerOpen={drawerOpen}
                             toggleDrawer={toggleDrawer}
                         />
