@@ -14,14 +14,31 @@ import SvgIcon from "@mui/material/SvgIcon";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { ReactComponent as IconSvg } from "../../assets/images/icon.svg";
 import TemporaryDrawer from "./AppBarDrawer";
+import patreonIcon from "../../assets/images/patreonIcon.svg";
+import discordIcon from "../../assets/images/discordIcon.svg";
+import facebookIcon from "../../assets/images/facebookIcon.svg";
+import githubIcon from "../../assets/images/githubIcon.svg";
+import { useTheme } from "@mui/material/styles";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
 
-const pages = ["Home", "Products", "About", "Contribute"];
-const settings = ["Discord", "Patreon", "Facebook", "GitHub", "Theme"];
-const drawerWidth = "100%";
-
-export default function Header({ value }) {
-    // const context = React.useContext(value);
-
+import { useAppContext } from "../../AppProvider";
+const pages = ["Products", "Resources", "About", "Contribute"];
+//TODO: make icon for socials instead of the cog
+const settings = {
+    Theme: [Brightness4Icon, null],
+    Discord: [discordIcon, "https://discord.gg"],
+    Patreon: [patreonIcon, "https://www.patreon.com"],
+    Facebook: [facebookIcon, "https://www.facebook.com"],
+    GitHub: [githubIcon, "https://github.com"],
+};
+// Theme: { icon: Brightness4Icon, url: null, action: () => {} },
+<IconButton sx={{ ml: 1 }} onClick={null} color="inherit">
+    {"dark" ? <Brightness7Icon /> : <Brightness4Icon />}
+</IconButton>;
+export default function Header() {
+    const theme = useTheme();
+    const { setMode } = useAppContext();
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -208,7 +225,7 @@ export default function Header({ value }) {
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Open settings">
+                        <Tooltip title="Open settings" color="inherit">
                             <IconButton
                                 onClick={handleOpenUserMenu}
                                 sx={{ p: 0 }}
@@ -236,16 +253,93 @@ export default function Header({ value }) {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            {settings.map((setting) => (
-                                <MenuItem
-                                    key={setting}
-                                    onClick={handleCloseUserMenu}
-                                >
-                                    <Typography textAlign="center">
-                                        {setting}
-                                    </Typography>
-                                </MenuItem>
-                            ))}
+                            {
+                                //TODO: fix Theme button alignment
+                            }
+                            {Object.keys(settings).map((key) =>
+                                key === "Theme" ? (
+                                    <MenuItem
+                                        key={settings[key][0]}
+                                        onClick={() => {
+                                            setMode((old) =>
+                                                old === "light"
+                                                    ? "dark"
+                                                    : "light"
+                                            );
+                                            handleCloseUserMenu();
+                                        }}
+                                    >
+                                        <Box
+                                            style={{
+                                                textDecoration: "none",
+                                                color: "inherit",
+                                                display: "flex",
+                                                justifyContent: "center",
+                                                alignItems: "center",
+                                                padding: "5px 15px",
+                                            }}
+                                        >
+                                            <IconButton
+                                                sx={{
+                                                    ml: 1,
+                                                    marginRight: "10px",
+                                                }}
+                                            >
+                                                {theme.palette.mode ===
+                                                "dark" ? (
+                                                    <Brightness7Icon
+                                                        sx={{
+                                                            fill: "rgb(105, 112, 143)",
+                                                        }}
+                                                    />
+                                                ) : (
+                                                    <Brightness4Icon
+                                                        sx={{
+                                                            fill: "rgb(105, 112, 143)",
+                                                        }}
+                                                    />
+                                                )}
+                                            </IconButton>
+                                            <Typography textAlign="center">
+                                                {key}
+                                            </Typography>
+                                        </Box>
+                                    </MenuItem>
+                                ) : (
+                                    <MenuItem
+                                        key={settings[key][0]}
+                                        onClick={handleCloseUserMenu}
+                                    >
+                                        <Link
+                                            to={settings[key][1]}
+                                            target="_blank"
+                                            style={{
+                                                textDecoration: "none",
+                                                color: "inherit",
+                                                display: "flex",
+                                                justifyContent: "center",
+                                                alignItems: "center",
+                                                padding: "5px 15px",
+                                            }}
+                                        >
+                                            <IconButton>
+                                                <img
+                                                    src={settings[key][0]}
+                                                    alt={key}
+                                                    style={{
+                                                        width: "25px",
+                                                        height: "25px",
+                                                        marginRight: "10px",
+                                                    }}
+                                                />
+                                            </IconButton>
+                                            <Typography textAlign="center">
+                                                {key}
+                                            </Typography>
+                                        </Link>
+                                    </MenuItem>
+                                )
+                            )}
                         </Menu>
                     </Box>
                     {drawerOpen && (

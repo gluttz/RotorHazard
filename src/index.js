@@ -25,10 +25,7 @@ const root = createRoot(domNode);
 root.render(
     <React.StrictMode>
         <BrowserRouter>
-            <ThemeProvider theme={theme}>
-                <CssBaseline />
-                <App />
-            </ThemeProvider>
+            <App />
         </BrowserRouter>
     </React.StrictMode>
 );
